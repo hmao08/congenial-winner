@@ -1,0 +1,138 @@
+# congenial-winner
+// Programa em C++ que gerencia a interface da máquina de venda automática de bebidas, doces e salgados.
+
+#include <iostream>
+
+int main()
+
+{
+    // É importante salientar que a máquina que utilizará esse programa, possuí uma tela de interação com o cliente, um teclado numérico de 0 a 9, e com as teclas S (sim) e N (não) e ENTER.
+
+    // Exibição da mensagem de boas-vindas ao cliente no painel interativo
+
+    std::cout << "Ola, seja bem-vindo a nossa loja!" << std::endl;
+    std::cout << "Em que posso ajuda-lo?" << std::endl;
+    std::cout << "Escolha um ou mais produtos da nossa loja, digite o codigo do produto e a quantidade desejada." << std::endl;
+    std::cout << "Digite S para ir ao menu de produtos, ou N para sair." << std::endl;
+
+
+    // Criação da variável para armazenar a opção de compra escolhida pelo usuário
+
+    char opcao;
+    std::cin >> opcao;
+
+    if (opcao == 'S' || opcao == 's') {
+
+        // Tela de menu de produtos disponíveis para compra
+
+        std::cout << "---- Menu de Produtos ----" << std::endl;
+        std::cout << "Codigo | Produto                                 | Preco Unitario" << std::endl;
+        std::cout << "-------|-----------------------------------------|---------------" << std::endl;
+        std::cout << "01     | Coca Cola - lata 350 ml                 | R$ 5.00" << std::endl;
+        std::cout << "02     | Fanta Laranja - lata 350 ml             | R$ 5.00" << std::endl;
+        std::cout << "03     | Guaraná Antartica - lata 350 ml          | R$ 5.00" << std::endl;
+        std::cout << "05     | Cafe Expresso - lata 200 ml              | R$ 5.00" << std::endl;
+        std::cout << "06     | Cha Mate - lata 350 ml                   | R$ 5.00" << std::endl;
+        std::cout << "07     | Cha Preto - lata 350 ml                  | R$ 5.00" << std::endl;
+        std::cout << "08     | Agua sem gas - garrafa 500 ml            | R$ 5.00" << std::endl;
+        std::cout << "09     | Agua com gas - garrafa 500 ml            | R$ 5.00" << std::endl;
+        std::cout << "10     | Suco de laranja - garrafa 500 ml          | R$ 5.00" << std::endl;
+        std::cout << "11     | Bebida energetica - lata 300 ml          | R$ 10.00" << std::endl;
+        std::cout << "12     | Guaraviton - garrafa 500 ml              | R$ 5.00" << std::endl;
+        std::cout << "13     | Suco de uva - garrafa 500 ml              | R$ 5.00" << std::endl;
+        std::cout << "14     | Suco de maracuja - garrafa 500 ml         | R$ 5.00" << std::endl;
+        std::cout << "15     | Coca Cola Diet - lata 350 ml             | R$ 5.00" << std::endl;
+        std::cout << "16     | Batata frita tradicional - pacote 90 gr  | R$ 5.00" << std::endl;
+        std::cout << "17     | Batata frita salsa & cebola - pacote 90 gr | R$ 5.00" << std::endl;
+        std::cout << "18     | Batata frita churrasco - pacote 90 gr    | R$ 5.00" << std::endl;
+        std::cout << "19     | Amendoim comum - pacote 100 gr           | R$ 5.00" << std::endl;
+        std::cout << "20     | Amendoim japones - pacote 100 gr         | R$ 5.00" << std::endl;
+        std::cout << "21     | Barra de cereais sabor chocolate - 100 gr | R$ 5.00" << std::endl;
+        std::cout << "22     | Barra de cereais sabor morango - 100 gr   | R$ 5.00" << std::endl;
+        std::cout << "23     | Barra de cereais sabor mel - 100 gr       | R$ 5.00" << std::endl;
+        std::cout << "24     | Barra de chocolate Laka - 90 gr           | R$ 5.00" << std::endl;
+        std::cout << "25     | Barra de chocolate Chokito - 90 gr        | R$ 5.00" << std::endl;
+        std::cout << "26     | Barra de chocolate Charge - 90 gr         | R$ 5.00" << std::endl;
+        std::cout << "27     | Barra de chocolate Sulflair - 90 gr       | R$ 5.00" << std::endl;
+        std::cout << "28     | Chiclete Trident menta - 80 gr            | R$ 5.00" << std::endl;
+        std::cout << "29     | Chiclete Trident extra forte - 80 gr      | R$ 5.00" << std::endl;
+        std::cout << "30     | Chiclete Trident melancia - 80 gr         | R$ 5.00" << std::endl;
+
+
+        // Criação das variáveis para armazenar os produtos escolhidos pelo usuário.
+
+        std::string produtosEscolhidos = "";
+        double valorTotal = 0.0;
+
+        // Criação das variáveis para controlar a repetição de escolha de produtos pelo usuário.
+
+        char escolhaProduto;
+        char escolhaQuantidade;
+
+        do {
+            std::cout << "Digite o codigo do produto desejado e pressione S para confirmar: ";
+            int codigoProduto;
+            std::cin >> codigoProduto;
+
+            std::cout << "Digite a quantidade desejada e pressione S para confirmar: ";
+            int quantidade;
+            std::cin >> quantidade;
+
+            // Código para atualizar o pedido com os produtos escolhidos, e o valor total da compra.
+
+            produtosEscolhidos += "Produto " + std::to_string(codigoProduto) + " - Quantidade: " + std::to_string(quantidade) + "\n";
+            valorTotal += 5.00 * quantidade;
+
+            // Dar a opção ao cliente de encerrar a compra, ou adquirir mais produtos.
+
+            std::cout << "Deseja adicionar mais algum item? (S/N): ";
+            std::cin >> escolhaProduto;
+            
+        } while (escolhaProduto == 'S' || escolhaProduto == 's');
+
+        // Após encerrado o pedido e calculado o valor, apresenta o valor a ser pago.
+
+        std::cout << "O total do seu pedido e de R$ " << valorTotal << std::endl;
+
+
+       // Escolha da forma de pagamento pelo cliente.
+
+    std::cout << "Escolha pagar em dinheiro ou cartao: D/C" << std::endl;
+        char escolhaPagamento;
+        std::cin >> escolhaPagamento;
+
+        // Pagamento em dinheiro.
+
+        if (escolhaPagamento == 'D' || escolhaPagamento == 'd') {
+            std::cout << "O pagamento pode ser feito com notas de R$5,00 R$10,00 R$20,00 e R$50,00" << std::endl;
+            std::cout << "Insira as notas no local indicado no painel" << std::endl;
+
+            // Neste ponto, o programa de vendas irá atuar com outro programa que faz a leitura das notas inseridas, e aguardará que o programa que analisa as notas, reconheça a/s nota/s inserida/s, confira com o valor apresentado pelo programa de vendas, se estiver correto, dará o OK  ao programa de vendas para que libere os produtos. Se houver troco, o programa de notas irá forncer ao cliente o troco, se a nota inserida for insuficiente, o programa de notas informará na tela para que sejam inseridas mais notas.
+
+            // O programa de vendas, atuará conjuntamente com um programa de automação de escolha e entrega dos produtos selecionados pelo cliente/usuário que gerenciará a parte mecânica da máquina, para que separe os produtos e os coloque na gaveta de retirada.
+
+            std::cout << "Retire sua mercadoria na gaveta" << std::endl;
+
+            // Caso o cliente opte por pagamento com cartão, o programa de vendas utilizará o código abaixo:
+
+        } else if (escolhaPagamento == 'C' || escolhaPagamento == 'c') {
+            std::cout << "Aceitamos cartao de debito ou cartao de credito" << std::endl;
+            std::cout << "Insira o cartao no local indicado no painel, aguarde e digite sua senha de uso pessoal" << std::endl;
+
+            // O programa de conferência de notas, também gerenciará a venda por cartões, através de leitura de cartão inserido na máquina pela leitora, conectada a rede bancária por um chip telefônico interno. Após a resposta positiva do sistema de vendas por cartão, o programa de vendas irá liberar a mercadoria, da mesma forma como ocorre com vendas em dinheiro.
+
+            std::cout << "Retire sua mercadoria na gaveta" << std::endl;
+        }
+
+        std::cout << "Obrigado pela sua compra, tenha um bom dia e volte sempre!!!" << std::endl;
+
+    }
+
+    return 0;
+}
+
+
+
+
+
+
